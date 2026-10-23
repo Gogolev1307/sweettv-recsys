@@ -6,8 +6,8 @@
 ## Validation results
 
 Fit window A: `[2020-03-09, 2020-05-18)`; validation window B: `[2020-05-18, 2020-07-27)`; 6,376 fixed candidates and 1,260 template users. TK evaluates 1,238 users; T1 evaluates 1,246.
-Scores and runtimes below are the existing saved results: `validation_methods_v4.csv` (15 methods) and the selected row of `validation_rerank.csv` (rerank_v5). No configuration search was run for this report.
-Runtime is the recorded per-configuration time: fixed-model rows include their measured fit/score/evaluation; hybrid rows cover fusion/ranking/evaluation with shared fits separate; rerank_v5 includes the internal-A classifier fit and B prediction/evaluation, with feature preparation separate. All seeds are 42; the classifier uses `early_stopping=False`.
+Scores and runtimes below come from `validation_methods_v4.csv` (15 methods), the selected row of `validation_rerank.csv` (rerank_v5), and the frozen standalone score50 evaluation in `component_check.txt`. No configuration search was run for these reports.
+Runtime is the recorded per-configuration time: fixed-model rows include their measured fit/score/evaluation; hybrid rows cover fusion/ranking/evaluation with shared fits separate; rerank_v5 includes the internal-A classifier fit and B prediction/evaluation, with feature preparation separate. The score50 runtime includes score generation, ranking and TK/T1 evaluation after shared counts; its preparation is timed separately in `component_check.txt`. All seeds are 42; the classifier uses `early_stopping=False`.
 
 | Method | TK MAP@5 | T1 MAP@5 | Saved runtime (s) | Frozen hyperparameters |
 |---|---:|---:|---:|---|
@@ -22,6 +22,7 @@ Runtime is the recorded per-configuration time: fixed-model rows include their m
 | slot | 0.276980120 | 0.750524345 | 0.159 | `{"slot":"channel_weekend_hour","viewing":"all_fit_views"}` |
 | exposure | 0.327187220 | 0.778017657 | 0.140 | `{"smoothing_days":3}` |
 | score80 | 0.395503276 | 0.716698769 | 0.051 | `{"k":80}` |
+| score50 | 0.404794247 | 0.743905832 | 0.067 | `{"k":80}` |
 | hybrid_old | 0.306975184 | 0.781233280 | 0.183 | `{"MF":2.0,"PPR":2.0,"popularity":0.0,"rewatch":0.5}` |
 | hybrid_v2 | 0.333266694 | 0.790387908 | 0.144 | `{"rewatch_days":1.0,"w_mf":0.2,"w_pop":0.0,"w_ppr":0.5}` |
 | hybrid_v3 | 0.337903653 | 0.808533975 | 0.236 | `{"w_days":1.0,"w_exp":2.0,"w_mf":0.2,"w_pop":0.3,"w_ppr":2.0,"w_slot":2.0}` |

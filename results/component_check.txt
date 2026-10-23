@@ -1,0 +1,20 @@
+Standalone hybrid-component check (MAP@5)
+Python 3.12.4 | numpy 1.26.4 | scipy 1.13.1 | pandas 2.2.2
+Seed: 42; BLAS/OpenMP threads: 1; fixed k=80; no configuration selection
+Fit A=[2020-03-09 00:00:00, 2020-05-18 00:00:00); truth/target B=[2020-05-18 00:00:00, 2020-07-27 00:00:00)
+Protocol: 6,376 candidates; re-watching allowed; five distinct ids; descending scores/ascending-id ties.
+Same >=300s A-history cold-start definition and distinct-A-viewer popularity fill/fallback as the existing validation.
+score50 counts >=50%-complete labelled airings without a 300s cutoff; s50=sum_channels n50/(nA+80)*nT.
+Base = M(score80) + 0.5*M(score50) + 0.1*popularity_freq/max; M is per-user min-max over all 6,376 candidates.
+Target schedule is used only for programme/channel/time availability; B viewing is used only for evaluation labels.
+TK cohort: 1,260 = 1,238 evaluated + 22 no relevant programme.
+T1 cohort: 1,260 = 1,246 evaluated + 14 no relevant programme.
+A-cold users: 10; shared input/count preparation: 1.469s
+Component runtimes independently include completion-score generation, any normalization, ranking and TK/T1 evaluation; shared preparation is excluded.
+score50 alone (k=80): TK MAP@5=0.404794247; T1 MAP@5=0.743905832; runtime=0.066764s
+rerank_v5 candidate-generator base (Top-5 standalone): TK MAP@5=0.403786798; T1 MAP@5=0.731064741; runtime=0.117884s
+Both components: all 1,260 users receive exactly five distinct positive candidate ids; all 10 cold-start users receive the identical popularity fallback.
+Protected result/configuration/model/source artifacts unchanged: 67 files (SHA256, size and modification time).
+Submission CSVs preserved: 8; no new submissions.
+Saved: results/component_check.txt; score50 will be added to the authorized final_summary.md validation table.
+Total runtime: 1.824s
