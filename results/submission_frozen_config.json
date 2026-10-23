@@ -1,0 +1,46 @@
+{
+  "configurations": {
+    "CBF": {
+      "idf": "smooth_A_only",
+      "profile_weight": "log1p(seconds/60)",
+      "tf": "binary",
+      "year": "first_year_decade"
+    },
+    "MF": {
+      "alpha": 1,
+      "factors": 4,
+      "iterations": 10,
+      "reg": 10,
+      "seed": 42
+    },
+    "PPR": {
+      "alpha": 0.8,
+      "batch_size": 128,
+      "max_iterations": 500,
+      "tolerance": 1e-06
+    },
+    "association": {
+      "lift_strictly_greater_than": 1,
+      "minimum_support": 20,
+      "score": "max_confidence"
+    },
+    "hybrid": {
+      "MF": 2.0,
+      "PPR": 2.0,
+      "popularity": 0.0,
+      "rewatch": 0.5
+    },
+    "popularity": {},
+    "rewatch": {}
+  },
+  "fit_end": "2020-07-27 00:00:00",
+  "fit_start": "2020-03-09 00:00:00",
+  "seed": 42,
+  "test_candidate_count": 6636,
+  "test_schedule_columns_read": [
+    "tv_show_id"
+  ],
+  "threshold_seconds": 300,
+  "validation_config_sha256": "b8b2ee2dfdbcf8d326ec59c40d8563acf577c469ed7f18ed1ac5848d257c4d69",
+  "validation_config_source": "results/validation_methods.csv"
+}

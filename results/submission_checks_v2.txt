@@ -1,0 +1,24 @@
+sweet.tv final hybrid-v2 submission - frozen strict-truth selection
+Python 3.12.4 | numpy 1.26.4 | scipy 1.13.1 | pandas 2.2.2
+Seed: 42; watch threshold: 300s; BLAS/OpenMP threads: 1
+Frozen selection rule: maximise the unweighted mean of MAP@5 over T2, T3 and T4, each on its nonempty-truth cohort
+Frozen v2 weights: {"rewatch_days":1.0,"w_mf":0.2,"w_pop":0.0,"w_ppr":0.5}
+Frozen MF: {"alpha":1,"factors":4,"iterations":10,"reg":10,"seed":42}
+Frozen PPR: {"alpha":0.8,"batch_size":128,"max_iterations":500,"tolerance":1e-06}
+Selection manifest SHA256: 0c7703120b0b8598df48a55f4578ef04e7c6d7e946b9869db8859cf45f56aa31
+Refit [2020-03-09 00:00:00, 2020-07-27 00:00:00); count actual viewing dates over all weeks 11-30.
+Test schedule supplies tv_show_id only; complete candidate-pool min-max normalization; no retuning.
+Full-training watched airings=2,079,171; user-programme pairs=949,556; day-count pairs=949,556; max distinct days=130
+Test users=1,260; labelled test candidates=6,636; cold-start fallback users=2
+Shared input preparation: 5.779s
+Refit day/popularity components: 0.011s
+Refit MF: 1.136s
+Refit PPR: 39.688s; mean/max iterations=65.897/66; max residual=6.428e-07; non-converged=0
+Hybrid fusion/ranking/write/check: 0.231s
+submissions/submission_hybrid_v2.csv: rows=1,260; header=PASS; template user order=PASS; plain integer user_id=PASS; five space-separated distinct ids=PASS; test candidate membership=PASS; no id=0=PASS; cold-start fallback users=2; created
+Preserved submission_hybrid.csv: SHA256 and modification time unchanged
+Preserved submission_mf.csv: SHA256 and modification time unchanged
+Preserved submission_popularity.csv: SHA256 and modification time unchanged
+Preserved submission_ppr.csv: SHA256 and modification time unchanged
+Saved: submissions/submission_hybrid_v2.csv; results/submission_checks_v2.txt; results/submission_hybrid_v2_frozen.json
+Total runtime: 46.872 seconds

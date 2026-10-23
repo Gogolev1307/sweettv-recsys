@@ -1,0 +1,38 @@
+sweet.tv final submissions - frozen validation configurations
+Python 3.12.4 | numpy 1.26.4 | scipy 1.13.1 | pandas 2.2.2
+Seed: 42; watch threshold: 300s; BLAS/OpenMP threads: 1
+Configuration source: results/validation_methods.csv; SHA256=b8b2ee2dfdbcf8d326ec59c40d8563acf577c469ed7f18ed1ac5848d257c4d69
+Frozen configurations are read from selected rows; no tuning or validation scoring is performed.
+Frozen popularity: {}
+Frozen rewatch: {}
+Frozen MF: {"alpha":1,"factors":4,"iterations":10,"reg":10,"seed":42}
+Frozen PPR: {"alpha":0.8,"batch_size":128,"max_iterations":500,"tolerance":1e-06}
+Frozen CBF: {"idf":"smooth_A_only","profile_weight":"log1p(seconds/60)","tf":"binary","year":"first_year_decade"}
+Frozen association: {"lift_strictly_greater_than":1,"minimum_support":20,"score":"max_confidence"}
+Frozen hybrid: {"MF":2.0,"PPR":2.0,"popularity":0.0,"rewatch":0.5}
+Fit all training: [2020-03-09 00:00:00, 2020-07-27 00:00:00); combine airing overlaps before the 300s threshold.
+Test schedule: export_arh_31-42-final.csv; read column tv_show_id only, for candidate availability.
+Training watched airings: 2,079,171; users: 4,890; programmes: 4,276
+Matrix: 4,892 users x 7,839 programmes; 949,556 observed user-programme pairs
+Test users: 1,260; labelled test candidates: 6,636; training-only metadata snapshots: 8,233
+Shared input preparation: 13.399s
+Cold-start test users (no usable weeks 11-30 history): 2
+Refit popularity: 1,260 users; exactly five distinct candidate ids each; cold-start fallback=2; runtime=0.226s
+Refit rewatch: 1,260 users; exactly five distinct candidate ids each; cold-start fallback=2; runtime=0.035s
+Refit MF: 1,260 users; exactly five distinct candidate ids each; cold-start fallback=2; runtime=1.177s
+Refit PPR: 1,260 users; exactly five distinct candidate ids each; cold-start fallback=2; runtime=39.117s
+PPR convergence: mean/max iterations=65.897/66; max final L1 residual=6.428e-07; non-converged=0; max mass error=5.329e-15
+Refit CBF: 1,260 users; exactly five distinct candidate ids each; cold-start fallback=2; runtime=0.418s
+CBF refit vocabulary/IDF: weeks 11-30 metadata only; features=15,232; zero-vector programmes=1,437; test metadata fields read=0
+Refit association: 1,260 users; exactly five distinct candidate ids each; cold-start fallback=2; runtime=3.593s
+Association rules kept after final refit: 3,109,918
+Refit hybrid: 1,260 users; exactly five distinct candidate ids each; cold-start fallback=2; runtime=0.193s
+
+WRITTEN-FILE CHECKS
+submissions/submission_popularity.csv: rows=1,260; header=PASS; template user order=PASS; plain integer user_id=PASS; five space-separated distinct ids=PASS; test candidate membership=PASS; no id=0=PASS; cold-start fallback users=2; write/check runtime=0.008s
+submissions/submission_ppr.csv: rows=1,260; header=PASS; template user order=PASS; plain integer user_id=PASS; five space-separated distinct ids=PASS; test candidate membership=PASS; no id=0=PASS; cold-start fallback users=2; write/check runtime=0.007s
+submissions/submission_hybrid.csv: rows=1,260; header=PASS; template user order=PASS; plain integer user_id=PASS; five space-separated distinct ids=PASS; test candidate membership=PASS; no id=0=PASS; cold-start fallback users=2; write/check runtime=0.007s
+submissions/submission_mf.csv: rows=1,260; header=PASS; template user order=PASS; plain integer user_id=PASS; five space-separated distinct ids=PASS; test candidate membership=PASS; no id=0=PASS; cold-start fallback users=2; write/check runtime=0.007s
+Saved checks: results/submission_checks.txt
+Saved frozen configurations: results/submission_frozen_config.json
+Total runtime: 58.244 seconds

@@ -1,0 +1,69 @@
+sweet.tv popularity validation (MAP@5)
+Python 3.12.4 | pandas 2.2.2 | numpy 1.26.4 | scipy 1.13.1
+Random seed: 42 (popularity itself is deterministic)
+A: [2020-03-09 00:00:00, 2020-05-18 00:00:00); B: [2020-05-18 00:00:00, 2020-07-27 00:00:00); test: [2020-07-27 00:00:00, 2020-10-19 00:00:00)
+Windows are half-open; view seconds are clipped at boundaries before thresholding.
+Cache: disabled; keys include source path/size/mtime, package versions and pipeline version
+
+DATA CHECKS
+Views: 5,821,987; users: 4,914; user_id dtype: uint64; test users: 1,260 (uint64)
+View start range: 2020-03-09 00:00:02 .. 2020-07-26 23:58:42; last stop: 2020-07-26 23:59:58
+duraton != stop-start: 117; differences in seconds: {-3600: 117}; using stop-start
+export_arh_11-20-final.csv: 1,074,235 rows; starts 2020-03-08 23:00:00 .. 2020-05-18 11:45:00; nonpositive durations: 1
+export_arh_21-30-final.csv: 1,074,394 rows; starts 2020-05-18 00:00:00 .. 2020-07-27 11:55:00; nonpositive durations: 0
+export_arh_31-42-final.csv: 1,295,378 rows; starts 2020-07-27 00:00:00 .. 2020-10-19 11:55:00; nonpositive durations: 0
+Training files' calendar overlap: 2020-05-18 .. 2020-05-18; cross-file duplicate keys: 0
+Concatenate then deduplicate (channel_id, start_time), keep last: 1 removed; dates: {'2020-03-29': 1}
+Deduplicated schedule: 2,148,628 unique airings; remaining nonpositive durations removed: 0
+vsetv_id -> channel_id: 5,708,408/5,821,987 views (98.049%); missing channels: [149, 1174, 1508, 1509, 1510]
+Same-channel exact view-start/programme-start coincidences at offset 0: 1,625
+Times use the supplied same-clock convention; no timezone shift applied.
+
+JOIN COVERAGE (before the watch threshold; id=0 never becomes an item)
+A: 3,945,173 view intervals; 3,575,365 matched (90.626%); 867,432 overlap multiple airings
+  View-airing records: 4,920,893 = 2,383,294 labelled + 2,537,599 unlabelled
+  Viewing seconds: 4,925,125,033; covered (union): 4,474,311,002 (90.847%); uncovered: 450,814,031
+  Labelled seconds (union): 2,451,928,356; id=0 seconds (union): 2,022,382,646 (41.063% of viewing)
+  Additive airing-overlap seconds: 4,474,315,748; id=0: 2,022,387,392; labelled (user, airing) aggregates: 1,823,865
+B: 1,877,821 view intervals; 1,834,213 matched (97.678%); 472,125 overlap multiple airings
+  View-airing records: 2,832,437 = 1,465,129 labelled + 1,367,308 unlabelled
+  Viewing seconds: 3,694,511,391; covered (union): 3,633,405,482 (98.346%); uncovered: 61,105,909
+  Labelled seconds (union): 2,123,324,853; id=0 seconds (union): 1,510,080,629 (40.874% of viewing)
+  Additive airing-overlap seconds: 3,633,405,482; id=0: 1,510,080,629; labelled (user, airing) aggregates: 1,191,015
+
+THRESHOLD STATISTICS (labelled airings; one aggregate per user/airing/window)
+View interval seconds, weeks 11-30: p10=80.000 p25=133.000 p50=396.000 p75=1,452.000 p90=3,911.000 p99=14,080.140
+A per-airing overlap seconds: p10=86.000 p25=197.000 p50=624.000 p75=1,779.000 p90=3,600.000 p99=7,661.000
+A overlap/programme-duration: p10=0.015 p25=0.041 p50=0.173 p75=0.580 p90=1.000 p99=1.000
+A fractions > 1 from additive sessions: 14,874
+B per-airing overlap seconds: p10=95.000 p25=245.000 p50=891.000 p75=2,524.000 p90=5,192.600 p99=9,097.000
+B overlap/programme-duration: p10=0.016 p25=0.049 p50=0.239 p75=0.796 p90=1.000 p99=1.000
+B fractions > 1 from additive sessions: 9,124
+
+VALIDATION PROTOCOL
+Fit: A labelled interactions only; truth: each test user's watched programme ids in B.
+Candidates: labelled ids in schedule rows with airing starts inside B.
+Re-watching allowed; five distinct candidates per user; A-popularity fill and cold-start fallback.
+Test-weeks schedule is read only for input checks; B interactions are used only for truth/diagnostics.
+
+POPULARITY BASELINE (watch >= 300 seconds)
+Candidate programmes: 6,376; ranking: distinct A viewers descending, id ascending for ties
+B-truth carry-in programmes outside B-start candidates: 2 across 10 users; truth retained
+Watched user-airings: A=1,224,339; B=855,477
+Top five (programme id, distinct A viewers): [(2400480, 4362), (240081, 4062), (6500479, 3610), (2400508, 3608), (2400467, 3538)]
+Validation MAP@5: 0.737594971
+All 1,260 users receive exactly five distinct valid ids; verified before scoring.
+
+COHORT ACCOUNTING
+1,260 test users = 1,246 evaluated + 14 with no relevant B programme (exact)
+Test users with no usable A history: 10
+Test users with no usable weeks 11-30 history: 2
+Evaluated users with no usable A history: 8
+
+THRESHOLD SENSITIVITY (same protocol; threshold applied independently in A and B)
+ 60 seconds: popularity MAP@5=0.803713216; evaluated=1,246; no B truth=14; no A history=10
+300 seconds: popularity MAP@5=0.737594971; evaluated=1,246; no B truth=14; no A history=10
+900 seconds: popularity MAP@5=0.633582329; evaluated=1,245; no B truth=15; no A history=10
+
+Results file: results/validation_popularity.txt
+Runtime: 38.806 seconds

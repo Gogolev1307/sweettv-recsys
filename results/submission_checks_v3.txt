@@ -1,0 +1,26 @@
+sweet.tv final hybrid-v3 submission - calibrated frozen habits
+Python 3.12.4 | numpy 1.26.4 | scipy 1.13.1 | pandas 2.2.2
+Seed: 42; BLAS/OpenMP threads: 1; labelled-airing watch threshold: 300s
+Frozen selection rule: maximise the unweighted mean of MAP@5 over T2 and T3 only, each on its nonempty-truth cohort
+User-provided public Kaggle lifts (old=1.14x, v2=1.28x) align best with T2/T3; T1 understates and T4 overstates the lift. V3 selection therefore uses mean(T2,T3) only.
+Frozen v3 weights: {"w_days":1.0,"w_exp":2.0,"w_mf":0.2,"w_pop":0.3,"w_ppr":2.0,"w_slot":2.0}
+Frozen MF: {"alpha":1,"factors":4,"iterations":10,"reg":10,"seed":42}; frozen PPR: {"alpha":0.8,"batch_size":128,"max_iterations":500,"tolerance":1e-06}
+Selection manifest SHA256: 9e27053c4943dd750ffd0ee4b18342e1419460082ce8ed45a0542f91e1fe1a2d
+Fit [2020-03-09 00:00:00, 2020-07-27 00:00:00); target [2020-07-27 00:00:00, 2020-10-19 00:00:00)
+Target schedule fields: channel_id, start_time, duration, tv_show_id only; known export-boundary carry-in included.
+Training watched airings=2,079,171; observed user-programme/day pairs=949,556/949,556
+Test users=1,260; labelled candidates=6,636; cold-start fallback users=2
+Shared input preparation: 6.668s
+Slot: fit views=5,821,987; all-view seconds=8,619,636,424; max row-sum error=4.441e-16; runtime=2.029s
+Exposure: max scheduled fit/target days=140/84; smoothing=3; runtime=0.094s
+Refit MF: 1.141s
+Refit PPR: 39.413s; iterations mean/max=65.897/66; max residual=6.428e-07; non-converged=0
+Fusion/ranking/write/check: 0.351s
+submissions/submission_hybrid_v3.csv: rows=1,260; header=PASS; template user order=PASS; plain integer user_id=PASS; five space-separated distinct ids=PASS; test candidate membership=PASS; no id=0=PASS; cold-start fallback users=2; created
+Preserved submission_hybrid.csv: SHA256 and modification time unchanged
+Preserved submission_hybrid_v2.csv: SHA256 and modification time unchanged
+Preserved submission_mf.csv: SHA256 and modification time unchanged
+Preserved submission_popularity.csv: SHA256 and modification time unchanged
+Preserved submission_ppr.csv: SHA256 and modification time unchanged
+Saved: submissions/submission_hybrid_v3.csv; results/submission_checks_v3.txt; results/submission_hybrid_v3_frozen.json
+Total runtime: 49.767 seconds

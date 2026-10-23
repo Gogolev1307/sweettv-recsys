@@ -1,0 +1,114 @@
+{
+  "airing_count_scope": "unique channel/start airings intersecting each half-open window; full duration denominator",
+  "best_standalone_score80_k": 80,
+  "calibration_feedback": {
+    "hybrid_old": {
+      "private": 0.30256,
+      "public": 0.32064
+    },
+    "hybrid_v2": {
+      "private": 0.33353,
+      "public": 0.35814
+    },
+    "hybrid_v3": {
+      "private": null,
+      "public": 0.3642
+    },
+    "popularity": {
+      "private": 0.2775,
+      "public": 0.28078
+    }
+  },
+  "cohort_accounting": {
+    "T1": {
+      "evaluated_users": 1246,
+      "median_relevant_all_users": 108.0,
+      "median_relevant_evaluated_users": 110.0,
+      "no_relevant_users": 14
+    },
+    "T2": {
+      "evaluated_users": 1240,
+      "median_relevant_all_users": 35.0,
+      "median_relevant_evaluated_users": 36.0,
+      "no_relevant_users": 20
+    },
+    "T3": {
+      "evaluated_users": 1022,
+      "median_relevant_all_users": 4.0,
+      "median_relevant_evaluated_users": 6.0,
+      "no_relevant_users": 238
+    },
+    "T4": {
+      "evaluated_users": 1246,
+      "median_relevant_all_users": 10.0,
+      "median_relevant_evaluated_users": 10.0,
+      "no_relevant_users": 14
+    },
+    "TK": {
+      "evaluated_users": 1238,
+      "high_completion_user_airings": 93711,
+      "median_relevant_all_users": 5.0,
+      "median_relevant_evaluated_users": 5.0,
+      "no_relevant_users": 22,
+      "relevance_size_counts": {
+        "0": 22,
+        "1": 16,
+        "2": 16,
+        "3": 16,
+        "4": 40,
+        "5": 1150
+      }
+    }
+  },
+  "competition_ground_truth_quote": "all entries with tv_show_id = 0 were removed from TV program schedule files; for each user and each TV show user screen time (time user watched the show divided by total duration of the show) was calculated. Only TV shows with high screen time (>= 0.8) were taken into account; for each user high-screen time TV shows frequency was calculated; for each user strictly 5 most frequent TV shows were selected DESC",
+  "completion_requires_300_seconds": false,
+  "component_configurations": {
+    "PPR": {
+      "alpha": 0.8,
+      "batch_size": 128,
+      "max_iterations": 500,
+      "tolerance": 1e-06
+    }
+  },
+  "configuration": {
+    "k": 80,
+    "w50": 0.5,
+    "w_pop": 0.1,
+    "w_ppr": 0.05,
+    "w_slot": 0.05
+  },
+  "history_threshold_seconds": 300,
+  "legacy_config_sha256": "b8b2ee2dfdbcf8d326ec59c40d8563acf577c469ed7f18ed1ac5848d257c4d69",
+  "score80_coefficient": 1,
+  "screen_time_percentages": [
+    80,
+    50
+  ],
+  "seed": 42,
+  "selection_map_TK": 0.4049923712080416,
+  "selection_rule": "maximise MAP@5 under TK; TK reproduces the competition's published ground-truth definition",
+  "target_schedule_fields": [
+    "channel_id",
+    "start_time",
+    "duration",
+    "tv_show_id"
+  ],
+  "truth_definitions": {
+    "T1": "any airing with overlap >= 300 seconds",
+    "T2": "total labelled overlap seconds in B >= 3600 (all positive airings)",
+    "T3": "qualifying airings (>= 300 seconds) on >= 5 distinct actual viewing dates",
+    "T4": "top 10 programmes by total labelled B overlap seconds; ascending-id ties (all positive airings)",
+    "TK": "top 5 programmes by count of labelled airings with screen time >= 0.8; ascending-id count ties"
+  },
+  "v3_selection_manifest_sha256": "9e27053c4943dd750ffd0ee4b18342e1419460082ce8ed45a0542f91e1fe1a2d",
+  "validation_candidate_count": 6376,
+  "validation_results_file": "validation_methods_v4.csv",
+  "validation_results_sha256": "01035b23028f8cb4c31abca9712f18efddbb0f2bd43cb5738d2944b1c18c2702",
+  "validation_scores": {
+    "T1": 0.7432584269662922,
+    "T2": 0.5386987007168459,
+    "T3": 0.5845080452272233,
+    "T4": 0.3622846441947566,
+    "TK": 0.4049923712080416
+  }
+}

@@ -1,0 +1,41 @@
+AP@5 hand checks: rerank_v5 validation predictions
+fit = window A; truth = window B TK
+
+=== Heaviest viewer ===
+user_id = 13571199046623737884
+rerank_v5 Top-5 = [240081, 2400480, 2400508, 12001682, 200337]
+TK truth set = {200352, 240081, 700369, 2400467, 12001734}
+Hit ranks = 1
+Relevant items |R| = 5; denominator = min(5, |R|) = min(5, 5) = 5
+Popularity-fill slots = 0/5
+
+Rank 1: id=240081; rel=1; hits so far=1; precision@1=1/1=1.000000000; contribution=1.000000000
+Rank 2: id=2400480; rel=0; hits so far=1; precision@2=1/2=0.500000000; contribution=0.000000000
+Rank 3: id=2400508; rel=0; hits so far=1; precision@3=1/3=0.333333333; contribution=0.000000000
+Rank 4: id=12001682; rel=0; hits so far=1; precision@4=1/4=0.250000000; contribution=0.000000000
+Rank 5: id=200337; rel=0; hits so far=1; precision@5=1/5=0.200000000; contribution=0.000000000
+
+Precision at hit ranks: P@1=1/1=1.000000000
+AP@5 = (1 + 0 + 0 + 0 + 0) / 5
+     = 1 / 5
+     = 0.200000000
+
+=== Light viewer ===
+user_id = 5923732481008255736
+rerank_v5 Top-5 = [240081, 2400480, 2400508, 2400467, 500281]
+TK truth set = {240081, 500281, 500315, 2400508, 10003040}
+Hit ranks = 1, 3, 5
+Relevant items |R| = 5; denominator = min(5, |R|) = min(5, 5) = 5
+Popularity-fill slots = 0/5
+
+Rank 1: id=240081; rel=1; hits so far=1; precision@1=1/1=1.000000000; contribution=1.000000000
+Rank 2: id=2400480; rel=0; hits so far=1; precision@2=1/2=0.500000000; contribution=0.000000000
+Rank 3: id=2400508; rel=1; hits so far=2; precision@3=2/3=0.666666667; contribution=0.666666667
+Rank 4: id=2400467; rel=0; hits so far=2; precision@4=2/4=0.500000000; contribution=0.000000000
+Rank 5: id=500281; rel=1; hits so far=3; precision@5=3/5=0.600000000; contribution=0.600000000
+
+Precision at hit ranks: P@1=1/1=1.000000000; P@3=2/3=0.666666667; P@5=3/5=0.600000000
+AP@5 = (1 + 0 + 2/3 + 0 + 3/5) / 5
+     = 34/15 / 5
+     = 0.453333333
+

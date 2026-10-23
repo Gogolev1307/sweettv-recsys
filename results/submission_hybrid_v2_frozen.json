@@ -1,0 +1,54 @@
+{
+  "component_configurations": {
+    "MF": {
+      "alpha": 1,
+      "factors": 4,
+      "iterations": 10,
+      "reg": 10,
+      "seed": 42
+    },
+    "PPR": {
+      "alpha": 0.8,
+      "batch_size": 128,
+      "max_iterations": 500,
+      "tolerance": 1e-06
+    }
+  },
+  "fit_end": "2020-07-27 00:00:00",
+  "fit_start": "2020-03-09 00:00:00",
+  "preserved_submissions": {
+    "submission_hybrid.csv": {
+      "mtime_ns": 1792705000912975251,
+      "sha256": "fae9f9290ad2a7635bde1a1b0b6e68beee54bc3c49b3d9de95bbafe1370089b2",
+      "size": 74607
+    },
+    "submission_mf.csv": {
+      "mtime_ns": 1792705000920057286,
+      "sha256": "7159f76e4f71d99ccf65896d6b89ae7e8dbbb48fb2a0860829dcc225b4c0a5e5",
+      "size": 75770
+    },
+    "submission_popularity.csv": {
+      "mtime_ns": 1792705000899294544,
+      "sha256": "73d71295c19c61c3702a3c8e0fae951f27a307ce9b05cd39fd37e9b93e0996e0",
+      "size": 74889
+    },
+    "submission_ppr.csv": {
+      "mtime_ns": 1792705000906229332,
+      "sha256": "e6ecf380e71a3d69d8e3d26860b0b3581f9d1d6b32edd9d10655f9bca93eed95",
+      "size": 74739
+    }
+  },
+  "seed": 42,
+  "test_candidate_count": 6636,
+  "test_schedule_columns_read": [
+    "tv_show_id"
+  ],
+  "threshold_seconds": 300,
+  "validation_selection_manifest_sha256": "0c7703120b0b8598df48a55f4578ef04e7c6d7e946b9869db8859cf45f56aa31",
+  "weights": {
+    "rewatch_days": 1.0,
+    "w_mf": 0.2,
+    "w_pop": 0.0,
+    "w_ppr": 0.5
+  }
+}

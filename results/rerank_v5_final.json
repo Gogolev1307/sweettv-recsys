@@ -1,0 +1,109 @@
+{
+  "base_parameters": {
+    "candidates": 50,
+    "k": 80,
+    "popularity_freq": 0.1,
+    "score50": 0.5,
+    "score80": 1.0
+  },
+  "cold_start_fallback_users": 2,
+  "configuration": {
+    "learning_rate": 0.05,
+    "max_iter": 300,
+    "max_leaf_nodes": 7
+  },
+  "early_stopping": false,
+  "feature_names": [
+    "n_80",
+    "s_80",
+    "nt_80",
+    "days_since_80",
+    "n_50",
+    "s_50",
+    "nt_50",
+    "days_since_50",
+    "n_300",
+    "s_300",
+    "nt_300",
+    "days_since_300",
+    "popularity_freq",
+    "target_airings",
+    "user_n80_total",
+    "user_n80_share",
+    "base_score",
+    "base_rank"
+  ],
+  "final_training_splits": [
+    {
+      "candidate_pool": 6376,
+      "features": 18,
+      "fit_end": "2020-05-18 00:00:00",
+      "fit_start": "2020-03-09 00:00:00",
+      "label_end": "2020-07-27 00:00:00",
+      "label_start": "2020-05-18 00:00:00",
+      "positives": 15750,
+      "rows": 241650,
+      "users": 4833,
+      "users_with_label_truth": 4595
+    },
+    {
+      "candidate_pool": 5013,
+      "features": 18,
+      "fit_end": "2020-06-15 00:00:00",
+      "fit_start": "2020-03-09 00:00:00",
+      "label_end": "2020-07-27 00:00:00",
+      "label_start": "2020-06-15 00:00:00",
+      "positives": 14660,
+      "rows": 242550,
+      "users": 4851,
+      "users_with_label_truth": 4539
+    }
+  ],
+  "fit_end": "2020-07-27 00:00:00",
+  "fit_start": "2020-03-09 00:00:00",
+  "frozen_v4_manifest_sha256": "a302ddadf9d20ec63bff9d49a5f53602a24ae5a79b80784c9746a647e6f70a30",
+  "outcome": "positive",
+  "preserved_submissions": {
+    "submission_hybrid.csv": {
+      "mtime_ns": 1792705000912975251,
+      "sha256": "fae9f9290ad2a7635bde1a1b0b6e68beee54bc3c49b3d9de95bbafe1370089b2",
+      "size": 74607
+    },
+    "submission_hybrid_v2.csv": {
+      "mtime_ns": 1792707354191590056,
+      "sha256": "1d7c48c776feb01ebbee104fd8fa1736cdcd4d5c53c7ff26d7c1f963ae93fd64",
+      "size": 74772
+    },
+    "submission_hybrid_v3.csv": {
+      "mtime_ns": 1792709554191119457,
+      "sha256": "2db07674e38d949663bb2852f2f9615a31409dcc8105e6c1d49ff8425eaede39",
+      "size": 74472
+    },
+    "submission_hybrid_v4.csv": {
+      "mtime_ns": 1792746568829223654,
+      "sha256": "5923c15c5f57d9dbcdf1f6b4c8115d122d9e9b3f32409704b360d3c89fad9ffe",
+      "size": 75726
+    },
+    "submission_mf.csv": {
+      "mtime_ns": 1792705000920057286,
+      "sha256": "7159f76e4f71d99ccf65896d6b89ae7e8dbbb48fb2a0860829dcc225b4c0a5e5",
+      "size": 75770
+    },
+    "submission_popularity.csv": {
+      "mtime_ns": 1792705000899294544,
+      "sha256": "73d71295c19c61c3702a3c8e0fae951f27a307ce9b05cd39fd37e9b93e0996e0",
+      "size": 74889
+    },
+    "submission_ppr.csv": {
+      "mtime_ns": 1792705000906229332,
+      "sha256": "e6ecf380e71a3d69d8e3d26860b0b3581f9d1d6b32edd9d10655f9bca93eed95",
+      "size": 74739
+    }
+  },
+  "recommended_final": "submissions/submission_rerank_v5.csv",
+  "seed": 42,
+  "sklearn_version": "1.4.2",
+  "target_end": "2020-10-19 00:00:00",
+  "target_start": "2020-07-27 00:00:00",
+  "test_candidate_count": 6636
+}

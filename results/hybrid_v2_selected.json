@@ -1,0 +1,71 @@
+{
+  "cohort_accounting": {
+    "T1": {
+      "evaluated_users": 1246,
+      "median_relevant_all_users": 108.0,
+      "median_relevant_evaluated_users": 110.0,
+      "no_relevant_users": 14
+    },
+    "T2": {
+      "evaluated_users": 1240,
+      "median_relevant_all_users": 35.0,
+      "median_relevant_evaluated_users": 36.0,
+      "no_relevant_users": 20
+    },
+    "T3": {
+      "evaluated_users": 1022,
+      "median_relevant_all_users": 4.0,
+      "median_relevant_evaluated_users": 6.0,
+      "no_relevant_users": 238
+    },
+    "T4": {
+      "evaluated_users": 1246,
+      "median_relevant_all_users": 10.0,
+      "median_relevant_evaluated_users": 10.0,
+      "no_relevant_users": 14
+    }
+  },
+  "component_configurations": {
+    "MF": {
+      "alpha": 1,
+      "factors": 4,
+      "iterations": 10,
+      "reg": 10,
+      "seed": 42
+    },
+    "PPR": {
+      "alpha": 0.8,
+      "batch_size": 128,
+      "max_iterations": 500,
+      "tolerance": 1e-06
+    }
+  },
+  "configuration_tie_break": "first ascending (w_ppr, w_pop, w_mf) grid point",
+  "day_definition": "actual viewing dates with positive overlap on an airing qualifying within the fitting window",
+  "legacy_config_sha256": "b8b2ee2dfdbcf8d326ec59c40d8563acf577c469ed7f18ed1ac5848d257c4d69",
+  "seed": 42,
+  "selection_rule": "maximise the unweighted mean of MAP@5 over T2, T3 and T4, each on its nonempty-truth cohort",
+  "strict_mean_map_at_5": 0.5637334892024028,
+  "threshold_seconds": 300,
+  "truth_definitions": {
+    "T1": "any airing with overlap >= 300 seconds",
+    "T2": "total labelled overlap seconds in B >= 3600 (all positive airings)",
+    "T3": "qualifying airings (>= 300 seconds) on >= 5 distinct actual viewing dates",
+    "T4": "top 10 programmes by total labelled B overlap seconds; ascending-id ties (all positive airings)"
+  },
+  "validation_candidate_count": 6376,
+  "validation_results_file": "validation_methods_v2.csv",
+  "validation_results_sha256": "b33161f92773efdb5b38560b951e1f8080369d72d4be7f2eb767206cf06ffd87",
+  "validation_scores": {
+    "T1": 0.7903879079721777,
+    "T2": 0.6067831541218638,
+    "T3": 0.6509849967384214,
+    "T4": 0.43343231674692345
+  },
+  "weights": {
+    "rewatch_days": 1.0,
+    "w_mf": 0.2,
+    "w_pop": 0.0,
+    "w_ppr": 0.5
+  }
+}

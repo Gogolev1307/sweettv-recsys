@@ -1,0 +1,53 @@
+CBF DIAGNOSTIC - unchanged scoring implementation; seed=42; threshold=300s
+CBF MAP@5 before (saved): 0.072833066
+Heaviest test user: 13571199046623737884; A airings=2,022; A programmes=649
+Candidates=6,376; median cosine=0.114838222; max cosine=0.626194050
+Five most-watched A programmes: id | seconds | cosine | candidate rank | title
+2400480 | 892,255 | 0.207620589 | 444/6,376 | ТСН. Неделя.
+20088 | 350,139 | 0.272597673 | 255/6,376 | 'Завтрак с 1+1'. Информационно-развлекательная программа.
+240081 | 252,975 | 0.168471604 | 1,021/6,376 | Факты. День.
+2400508 | 245,517 | 0.201097399 | 506/6,376 | Сегодня. Итоги с Олегом Панютой.
+6500479 | 244,966 | 0.139223586 | 1,910/6,376 | 'Мир наизнанку'.
+Independent id-to-token/IDF reconstruction: 7,117 rows; mismatches=0; max error=2.220e-16
+Alignment samples: id -> matrix column / feature row -> candidate position (0-based) -> title
+2400480 -> 196/196 -> 186 -> ТСН. Неделя.
+20088 -> 0/0 -> 0 -> 'Завтрак с 1+1'. Информационно-развлекательная программа.
+240081 -> 37/37 -> 36 -> Факты. День.
+2400508 -> 198/198 -> 188 -> Сегодня. Итоги с Олегом Панютой.
+6500479 -> 242/242 -> 229 -> 'Мир наизнанку'.
+90077525 -> 4955/4955 -> 4470 -> Х/ф 'Пластик'.
+90080935 -> 5903/5903 -> 5313 -> Х/ф 'Уличный боец'.
+90073483 -> 4138/4138 -> 3733 -> Х/ф 'Легенда танцующего ниндзя'.
+History id/seconds alignment: PASS (649 programmes); independent profile cosine max error=1.110e-16
+Candidate mask equals sorted B ids: True; full-score slice max error=0.000e+00
+Descending score / ascending id tie ranking: PASS
+CBF top five: id | cosine | watched in A | relevant in B | title
+90077525 | 0.626194050 | False | False | Х/ф 'Пластик'.
+90080935 | 0.592054503 | False | False | Х/ф 'Уличный боец'.
+90073483 | 0.588427806 | False | False | Х/ф 'Легенда танцующего ниндзя'.
+90082800 | 0.586055390 | False | False | Х/ф 'Волшебная малина'
+90076148 | 0.575470554 | False | False | Х/ф 'Войны орков'.
+History category contributions (top five by log weight):
+                      seconds  log_weight  programmes  seconds_share  log_weight_share
+category                                                                              
+Фильмы         2949640.000000 1858.560995         477       0.314161          0.680030
+Сериалы        1185586.000000  246.161737          54       0.126275          0.090068
+Развлечения    2236124.000000  245.497840          41       0.238166          0.089825
+Детям           481431.000000  199.121919          46       0.051276          0.072857
+Познавательное  664827.000000   82.130873          14       0.070810          0.030051
+Top-five history seconds share=21.150992%; log-weight share=1.582764%
+Largest profile features:
+decade:2010 0.405781270
+tv_show_category:фильмы 0.317525477
+genre:боевик 0.310576713
+tv_show_category:развлечения 0.290457507
+genre:приключения 0.244767829
+decade:2000 0.236501576
+genre:драма 0.220998292
+genre:комедия 0.214018248
+Evaluated top-five slots=6,230: films=3,723; watched in A=1,082; zero A viewers=4,715; relevant in B=696
+Evaluated users with no relevant CBF top-five hit: 848/1,246
+CBF MAP@5 current (unchanged): 0.072833066; evaluated users=1,246
+Conclusion: no implementation defect found; log-weighted multi-interest centroid favours broad film metadata.
+Saved: results/cbf_diagnostics.txt
+Runtime: 1.320 seconds
